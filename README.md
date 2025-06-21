@@ -7,6 +7,8 @@ This post is inspired by [recurrent-neural-networks-tutorial](http://www.wildml.
 
 In this tutorial, we will focus on how to train RNN by [Backpropagation Through Time (BPTT)](http://www.wildml.com/2015/10/recurrent-neural-networks-tutorial-part-3-backpropagation-through-time-and-vanishing-gradients/), based on the **computation graph** of RNN and do **automatic differentiation**. You can find that it is more simple and reliable to calculate the gradient in this way than you do it by hand.
 
+You may also like to read excellent articles from [Neeraj Krishna](https://medium.com/data-science/backpropagation-in-rnn-explained-bdf853b4e1c2), [Mustafa Murat ARAT](https://mmuratarat.github.io/2019-02-07/bptt-of-rnn) on BPTT and Computational Graph.
+
 This post will take RNN language model (rnnlm) as example. More about the fancy applications of RNN can be found [here](http://karpathy.github.io/2015/05/21/rnn-effectiveness/).
 ## How to train RNN
 The architecture of RNN can be as the following figure.
