@@ -1,3 +1,5 @@
+forked from gy910210/rnn-from-scratch
+
 # Implementing Recurrent Neural Network from Scratch
 I’m assuming that you are somewhat familiar with basic Neural Networks. If you’re not, you may want to head over to [Implementing A Neural Network From Scratch](https://github.com/pangolulu/neural-network-from-scratch),  which guides you through the ideas and implementation behind non-recurrent networks.
 ## Introduction
