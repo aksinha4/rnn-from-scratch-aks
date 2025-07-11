@@ -1,0 +1,19 @@
+{
+    "folders": [
+        {
+            "path": "../rnn-from-scratch-aks"
+        },
+        {
+            "path": "../simple-rnn_from_scratch"
+        },
+        {
+            "path": "../rnn_lstm_from_scratch"
+        },
+        {
+            "path": "../Neural-Network-Zoo"
+        },
+        {
+            "path": "../rnn-from-scratch"
+        }
+    ]
+}

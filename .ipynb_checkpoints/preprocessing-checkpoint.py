@@ -57,7 +57,5 @@ def getSentenceData(path, vocabulary_size=8000):
 
     return X_train, y_train
 
-
-
 if __name__ == '__main__':
     X_train, y_train = getSentenceData('data/reddit-comments-2015-08.csv')
