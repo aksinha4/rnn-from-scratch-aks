@@ -14,6 +14,9 @@
         },
         {
             "path": "../rnn-from-scratch"
+        },
+        {
+            "path": "../Transformer"
         }
     ]
 }

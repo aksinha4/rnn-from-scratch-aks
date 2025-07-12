@@ -1,6 +1,6 @@
 from datetime import datetime
-import numpy as np
 import sys
+import numpy as np
 from rnn import RNNLayer
 from output import Softmax
 
