@@ -4,6 +4,10 @@ import sys
 from gru import GRULayer
 from output import Softmax
 
+# Xavier Normalized Initialization
+def initWeights(input_size, output_size):
+    return np.random.uniform(-1, 1, (output_size, input_size)) * np.sqrt(6 / (input_size + output_size))
+
 
 class Model:
     def __init__(self, word_dim, hidden_dim=100, model_path="./gru_model.npz", toload=False, bptt_truncate=4):
@@ -12,13 +16,13 @@ class Model:
         self.hidden_dim = hidden_dim
         self.bptt_truncate = bptt_truncate # TODO: Future use
         if not toload:
-            self.Ur = np.random.uniform(-np.sqrt(1. / word_dim), np.sqrt(1. / word_dim), (hidden_dim, word_dim))
-            self.Wr = np.random.uniform(-np.sqrt(1. / hidden_dim), np.sqrt(1. / hidden_dim), (hidden_dim, hidden_dim))
-            self.Uz = np.random.uniform(-np.sqrt(1. / word_dim), np.sqrt(1. / word_dim), (hidden_dim, word_dim))
-            self.Wz = np.random.uniform(-np.sqrt(1. / hidden_dim), np.sqrt(1. / hidden_dim), (hidden_dim, hidden_dim))
-            self.Ug = np.random.uniform(-np.sqrt(1. / word_dim), np.sqrt(1. / word_dim), (hidden_dim, word_dim))
-            self.Wg = np.random.uniform(-np.sqrt(1. / hidden_dim), np.sqrt(1. / hidden_dim), (hidden_dim, hidden_dim))
-            self.V = np.random.uniform(-np.sqrt(1. / hidden_dim), np.sqrt(1. / hidden_dim), (word_dim, hidden_dim))
+            self.Ur = initWeights(word_dim, hidden_dim) # np.random.uniform(-np.sqrt(1. / word_dim), np.sqrt(1. / word_dim), (hidden_dim, word_dim))
+            self.Wr = initWeights(hidden_dim, hidden_dim) # np.random.uniform(-np.sqrt(1. / hidden_dim), np.sqrt(1. / hidden_dim), (hidden_dim, hidden_dim))
+            self.Uz = initWeights(word_dim, hidden_dim) # np.random.uniform(-np.sqrt(1. / word_dim), np.sqrt(1. / word_dim), (hidden_dim, word_dim))
+            self.Wz = initWeights(hidden_dim, hidden_dim) # np.random.uniform(-np.sqrt(1. / hidden_dim), np.sqrt(1. / hidden_dim), (hidden_dim, hidden_dim))
+            self.Ug = initWeights(word_dim, hidden_dim) # np.random.uniform(-np.sqrt(1. / word_dim), np.sqrt(1. / word_dim), (hidden_dim, word_dim))
+            self.Wg = initWeights(hidden_dim, hidden_dim) # np.random.uniform(-np.sqrt(1. / hidden_dim), np.sqrt(1. / hidden_dim), (hidden_dim, hidden_dim))
+            self.V = initWeights(hidden_dim, word_dim) # np.random.uniform(-np.sqrt(1. / hidden_dim), np.sqrt(1. / hidden_dim), (word_dim, hidden_dim))
             self.br = np.zeros((self.hidden_dim, 1)) # hidden bias
             self.bz = np.zeros((self.hidden_dim, 1)) # hidden bias
             self.bg = np.zeros((self.hidden_dim, 1)) # hidden bias

@@ -4,6 +4,11 @@ import numpy as np
 from rnn import RNNLayer
 from output import Softmax
 
+# Xavier Normalized Initialization
+def initWeights(input_size, output_size):
+    return np.random.uniform(-1, 1, (output_size, input_size)) * np.sqrt(6 / (input_size + output_size))
+
+
 # https://www.youtube.com/watch?v=4wuIOcD1LLI
 
 class Model:
@@ -13,9 +18,9 @@ class Model:
         self.hidden_dim = hidden_dim
         self.bptt_truncate = bptt_truncate # TODO: Future use
         if not toload:
-            self.Wxh = np.random.uniform(-np.sqrt(1. / word_dim), np.sqrt(1. / word_dim), (hidden_dim, word_dim))
-            self.Whh = np.random.uniform(-np.sqrt(1. / hidden_dim), np.sqrt(1. / hidden_dim), (hidden_dim, hidden_dim))
-            self.Wyh = np.random.uniform(-np.sqrt(1. / hidden_dim), np.sqrt(1. / hidden_dim), (word_dim, hidden_dim))
+            self.Wxh = initWeights(word_dim, hidden_dim) # np.random.uniform(-np.sqrt(1. / word_dim), np.sqrt(1. / word_dim), (hidden_dim, word_dim))
+            self.Whh = initWeights(hidden_dim, hidden_dim) # np.random.uniform(-np.sqrt(1. / hidden_dim), np.sqrt(1. / hidden_dim), (hidden_dim, hidden_dim))
+            self.Wyh = initWeights(hidden_dim, word_dim) # np.random.uniform(-np.sqrt(1. / hidden_dim), np.sqrt(1. / hidden_dim), (word_dim, hidden_dim))
             self.bh = np.zeros((self.hidden_dim, 1)) # hidden bias
             self.by = np.zeros((self.word_dim, 1)) # output bias
         else:
